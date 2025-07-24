@@ -57,27 +57,27 @@
   >
     <!-- Slider Section -->
     <div
-      class="p-8 md:p-12 bg-gradient-to-br flex flex-col justify-center items-center text-center text-white relative overflow-hidden"
+      class="p-8 md:p-12 bg-gradient-to-br flex flex-col justify-center items-center text-center text-white relative overflow-hidden bg-gray-600"
     >
       <!-- Background Image -->
       <img
         [src]="sliderImages[currentSlideIndex].path"
         [alt]="sliderImages[currentSlideIndex].title"
-        class="absolute inset-0 w-full h-full object-cover opacity-60 -z-10 transition-all duration-500"
+        class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-500"
       />
-      {{ sliderImages[currentSlideIndex].path }}
+
       <!-- Text Content -->
       <div
-        class="transition-opacity duration-500 ease-in-out"
+        class="transition-opacity duration-500 ease-in-out z-20 flex flex-col mt-auto"
         [class.opacity-0]="!isSliderVisible"
       >
         <h1 class="text-3xl font-bold">
           {{ sliderImages[currentSlideIndex].title }}
-          <span class="block text-2xl font-normal text-white/80 mt-1">
+          <span class="block text-2xl font-normal text-white mt-1">
             {{ sliderImages[currentSlideIndex].subtitle }}
           </span>
         </h1>
-        <p class="text-white/80 mt-4 max-w-md mx-auto">
+        <p class="text-white mt-4 max-w-md mx-auto">
           {{ sliderImages[currentSlideIndex].description }}
         </p>
       </div>
