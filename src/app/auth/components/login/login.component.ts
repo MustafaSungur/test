@@ -5,7 +5,7 @@ import { SliderImageDataService } from '../../services/slider-images-data.servic
   selector: 'app-login',
   imports: [NgClass, NgIf],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
   email = '';

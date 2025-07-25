@@ -63,7 +63,8 @@
       <img
         [src]="sliderImages[currentSlideIndex].path"
         [alt]="sliderImages[currentSlideIndex].title"
-        class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-500"
+        class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-500 ease-in-out"
+        [class.opacity-0]="!isSliderVisible"
       />
 
       <!-- Text Content -->
@@ -190,18 +191,7 @@
       </form>
 
       <p class="mt-8 text-center text-sm text-gray-500">
-        Hesabınız yok mu?
-        <a
-          href="#"
-          class="font-medium hover:underline transition-colors duration-300"
-          [ngClass]="
-            isDarkMode
-              ? 'text-violet-400 hover:text-violet-300'
-              : 'text-violet-600 hover:text-violet-500'
-          "
-        >
-          Kayıt Olun
-        </a>
+        2025 Kardelen Yazılım
       </p>
     </div>
   </div>
