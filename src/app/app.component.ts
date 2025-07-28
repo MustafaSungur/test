@@ -5,7 +5,7 @@ import { KarmedCardCategoryComponent } from './shared/components/cards/component
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, KarmedCardCategoryComponent, LoginComponent],
+  imports: [KarmedCardCategoryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
