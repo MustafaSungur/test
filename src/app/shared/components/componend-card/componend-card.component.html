@@ -1,0 +1,20 @@
+<div class="card-container">
+  <div class="card-header">
+    <div>
+      <h3>{{ title }}</h3>
+      <p>{{ description }}</p>
+    </div>
+    <button class="icon-btn" (click)="toggleCode()">
+      <img src="assets/code-icon.svg" alt="icon" />
+    </button>
+  </div>
+  <div class="card-content">
+    <ng-container *ngIf="!showCode; else tabsTemplate">
+      <img [src]="imageUrl" alt="Component Görseli" class="component-img" />
+    </ng-container>
+
+    <ng-template #tabsTemplate>
+      <app-static-tabs [tabs]="staticTabs"></app-static-tabs>
+    </ng-template>
+  </div>
+</div>
