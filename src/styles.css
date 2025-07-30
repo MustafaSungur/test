@@ -1,11 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html,
-body {
-  height: 100%;
+html {
+  color-scheme: light dark;
+  @include mat.all-component-colors;
 }
+
+:root,
+html:not(.dark-theme) {
+  @include mat.all-component-themes($light-theme);
+  & {
+    color-scheme: light;
+  }
+}
+
+html.dark-theme {
+  @include mat.all-component-colors($dark-theme);
+  & {
+    color-scheme: dark;
+  }
+}
+
 body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
 }

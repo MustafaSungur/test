@@ -1,0 +1,104 @@
+<div *ngIf="slides.length > 0" [class]="containerClasses">
+  <!-- Ana Resim Görünümü -->
+  <div
+    class="h-[350px] md:h-[500px] lg:h-[600px] w-full relative group"
+    (mouseenter)="pauseTimer()"
+    (mouseleave)="resumeTimer()"
+    aria-roledescription="carousel"
+    aria-label="Image slider"
+  >
+    <div
+      class="w-full h-full rounded-2xl overflow-hidden shadow-2xl shadow-black/50"
+    >
+      <div *ngFor="let slide of slides; let i = index">
+        <div
+          class="absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out"
+          [ngClass]="{
+            'opacity-100 z-10': i === currentIndex,
+            'opacity-0 z-0': i !== currentIndex
+          }"
+          [attr.aria-hidden]="i !== currentIndex"
+        >
+          <div
+            class="w-full h-full bg-center bg-cover"
+            [style.backgroundImage]="'url(' + slide.url + ')'"
+            role="img"
+            [attr.aria-label]="'Slide ' + (i + 1)"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sol Ok -->
+    <button
+      (click)="goToPrevious()"
+      class="hidden group-hover:block absolute top-1/2 -translate-y-1/2 left-5 text-2xl rounded-full p-2 bg-black/40 text-white cursor-pointer hover:bg-black/60 transition-all duration-300 z-20"
+      aria-label="Previous Slide"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+    </button>
+
+    <!-- Sağ Ok -->
+    <button
+      (click)="goToNext()"
+      class="hidden group-hover:block absolute top-1/2 -translate-y-1/2 right-5 text-2xl rounded-full p-2 bg-black/40 text-white cursor-pointer hover:bg-black/60 transition-all duration-300 z-20"
+      aria-label="Next Slide"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Küçük Resim (Thumbnail) Önizlemeleri -->
+  <div
+    class="flex justify-center gap-2 md:gap-4"
+    role="tablist"
+    aria-label="Slideshow navigation"
+  >
+    <button
+      *ngFor="let slide of slides; let i = index"
+      (click)="goToSlide(i)"
+      class="cursor-pointer rounded-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      [ngClass]="{
+        'ring-2 ring-white ring-offset-4 ring-offset-gray-900':
+          i === currentIndex,
+        'opacity-60 hover:opacity-100': i !== currentIndex
+      }"
+      role="tab"
+      [attr.aria-selected]="i === currentIndex"
+      [attr.aria-controls]="'slide-' + i"
+      [attr.aria-label]="'Go to slide ' + (i + 1)"
+    >
+      <img
+        [src]="slide.url"
+        [alt]="'Thumbnail of slide ' + (i + 1)"
+        class="w-20 h-14 md:w-28 md:h-20 object-cover rounded-md"
+      />
+    </button>
+  </div>
+</div>

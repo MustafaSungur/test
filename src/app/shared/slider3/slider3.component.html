@@ -1,0 +1,72 @@
+<div
+  *ngIf="slides.length > 0"
+  class="relative w-full m-auto flex flex-col items-center justify-center group"
+  (mouseenter)="pauseTimer()"
+  [class]="perspectiveContainerClasses"
+  (mouseleave)="resumeTimer()"
+  aria-roledescription="carousel"
+  aria-label="Image slider"
+>
+  <!-- 3D Efekt için Perspektif Sarmalayıcısı -->
+  <!-- Boyutlandırma sınıfları dinamik olarak buradan uygulanır -->
+  <div [class]="perspectiveContainerClasses" style="perspective: 1200px">
+    <div class="relative h-full w-full" style="transform-style: preserve-3d">
+      <!-- Slaytlar -->
+      <div
+        *ngFor="let slide of slides; let i = index"
+        class="absolute w-full h-full transition-all duration-700 ease-out"
+        [ngStyle]="getSlideStyle(i)"
+        [attr.aria-hidden]="i !== currentIndex"
+      >
+        <img
+          [src]="slide.url"
+          [alt]="slide.title"
+          class="w-full h-full object-cover rounded-2xl shadow-2xl shadow-black/60"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigasyon Okları -->
+  <button
+    (click)="goToPrevious()"
+    class="opacity-0 group-hover:opacity-100 absolute top-1/2 -translate-y-1/2 left-0 md:-left-8 text-2xl rounded-full p-3 bg-black/40 text-white cursor-pointer hover:bg-black/60 transition-all duration-300 z-50"
+    aria-label="Previous Slide"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 19l-7-7 7-7"
+      />
+    </svg>
+  </button>
+
+  <button
+    (click)="goToNext()"
+    class="opacity-0 group-hover:opacity-100 absolute top-1/2 -translate-y-1/2 right-0 md:-right-8 text-2xl rounded-full p-3 bg-black/40 text-white cursor-pointer hover:bg-black/60 transition-all duration-300 z-50"
+    aria-label="Next Slide"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 5l7 7-7 7"
+      />
+    </svg>
+  </button>
+</div>
