@@ -12,6 +12,8 @@ import { Card2Component } from './shared/components/cards/components/card2/card2
 import { Card3Component } from './shared/components/cards/components/card3/card3.component';
 import { Card4Component } from './shared/components/cards/components/card4/card4.component';
 import { Card5Component } from './shared/components/cards/components/card5/card5.component';
+import { KarmedButtonOutlineComponent } from './shared/components/button/components/karmed-button-outline/karmed-button-outline.component';
+import { KarmedButtonCreateComponent } from './shared/components/button/components/karmed-button-create/karmed-button-create.component';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +29,8 @@ import { Card5Component } from './shared/components/cards/components/card5/card5
     Card3Component,
     Card4Component,
     Card5Component,
+    KarmedButtonOutlineComponent,
+    KarmedButtonCreateComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

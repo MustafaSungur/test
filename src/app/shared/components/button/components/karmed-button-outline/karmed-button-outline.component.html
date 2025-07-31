@@ -1,0 +1,7 @@
+<button (click)="onButtonClick()">
+  <span *ngIf="!isContentProjected">{{ label }}</span>
+
+  <span #contentWrapper>
+    <ng-content></ng-content>
+  </span>
+</button>
