@@ -1,0 +1,43 @@
+<div
+  class="flex flex-col md:flex-row gap-8 justify-center items-center py-10 bg-gray-100"
+>
+  <!-- Card 1 -->
+  <app-karmed-card-image-feature
+    [imageUrl]="card1.image"
+    [title]="card1.title"
+    [description]="card1.description"
+  ></app-karmed-card-image-feature>
+  <app-karmed-card-article-summary
+    [imageUrl]="blogPost.image"
+    [category]="blogPost.category"
+    [title]="blogPost.title"
+    [description]="blogPost.description"
+  ></app-karmed-card-article-summary>
+  <app-karmed-card-simple
+    [description]="devCard.description"
+    [title]="devCard.title"
+  ></app-karmed-card-simple>
+</div>
+
+<div class="flex gap-10 mx-auto justify-center">
+  <app-karmed-card-user-profile
+    [imageUrl]="user1.pic"
+    [name]="user1.fullName"
+    [role]="user1.jobTitle"
+    [email]="user1.contactEmail"
+    [phone]="user1.contactPhone"
+  ></app-karmed-card-user-profile>
+
+  <app-karmed-card-user-profile-mini
+    [imageUrl]="user1.pic"
+    [name]="user1.fullName"
+    [role]="user1.jobTitle"
+    [email]="user1.contactEmail"
+    [phone]="user1.contactPhone"
+  ></app-karmed-card-user-profile-mini>
+</div>
+
+<div class="flex gap-10 justify-center my-20">
+  <app-karmed-button-create></app-karmed-button-create>
+  <app-karmed-button-outline></app-karmed-button-outline>
+</div>

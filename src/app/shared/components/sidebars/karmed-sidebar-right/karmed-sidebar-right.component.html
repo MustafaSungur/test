@@ -1,0 +1,95 @@
+<!-- karmed-sidebar-right.component.html -->
+
+<aside
+  class="h-full bg-gray-900 text-white shadow-2xl flex-shrink-0 transition-[width] duration-300 ease-in-out overflow-hidden"
+  [ngClass]="isOpen ? 'w-72' : 'w-0'"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="p-6 h-full flex flex-col w-72">
+    <!-- BAŞLIK VE KAPATMA BUTONU -->
+    <div class="flex justify-between items-center mb-4 flex-shrink-0">
+      <h2 class="text-xl font-bold text-gray-100 whitespace-nowrap">
+        Hızlı Erişim
+      </h2>
+      <button
+        (click)="onClose()"
+        class="p-2 rounded-full text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+        aria-label="Close sidebar"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-6 w-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- ARAMA INPUTU -->
+    <div class="mb-4 flex-shrink-0">
+      <input
+        type="search"
+        [(ngModel)]="searchTerm"
+        placeholder="Bekleyen hasta ara..."
+        class="w-full bg-gray-700 border border-gray-600 rounded-lg py-2 px-4 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <div
+      class="flex-grow min-h-0 flex flex-col border border-gray-700 rounded-lg"
+    >
+      <h3
+        class="text-sm font-semibold text-gray-300 p-3 bg-gray-900/50 rounded-t-lg border-b border-gray-700 flex-shrink-0"
+      >
+        BEKLEYEN HASTALAR
+      </h3>
+      <div class="overflow-y-auto overflow-x-hidden">
+        <table class="w-full text-sm text-left text-gray-300">
+          <thead
+            class="text-xs text-gray-400 uppercase bg-gray-800 sticky top-0"
+          >
+            <tr>
+              <th scope="col" class="px-3 py-2">#</th>
+              <th scope="col" class="px-3 py-2">İsim</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Sonuç bulunamadı durumu -->
+            <tr *ngIf="filteredPatients.length === 0">
+              <td colspan="3" class="text-center py-4 text-gray-500">
+                Sonuç bulunamadı.
+              </td>
+            </tr>
+            <!-- Hasta satırları -->
+            <tr
+              *ngFor="let patient of filteredPatients"
+              class="border-b border-gray-700 hover:bg-gray-700/50 transition-colors duration-150"
+            >
+              <td class="px-3 py-2 font-medium">{{ patient.id }}</td>
+              <td class="px-3 py-2 whitespace-nowrap">{{ patient.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DUYURULAR -->
+    <div class="mt-4 flex-shrink-0 flex flex-col h-32">
+      <h3 class="text-lg font-semibold text-gray-400 mb-2 px-1 flex-shrink-0">
+        DUYURULAR
+      </h3>
+      <div class="overflow-y-auto pr-2 text-sm text-gray-400 space-y-3">
+        <p *ngFor="let announcement of announcements">{{ announcement }}</p>
+      </div>
+    </div>
+  </div>
+</aside>

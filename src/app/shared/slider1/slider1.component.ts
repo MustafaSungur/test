@@ -12,7 +12,7 @@ export type SliderSize1 = 'small' | 'default' | 'large' | 'full-width';
 @Component({
   selector: 'app-slider1',
   standalone: true,
-  imports: [CommonModule, NgIf], // ngFor, ngClass, ngStyle gibi direktifler için gereklidir
+  imports: [CommonModule], // ngFor, ngClass, ngStyle gibi direktifler için gereklidir
   templateUrl: './slider1.component.html',
   styleUrls: ['./slider1.component.scss'],
 })

@@ -1,4 +1,15 @@
-<div class="flex justify-center gap-10 m-28">
-  <app-karmed-button-outline></app-karmed-button-outline>
-  <app-karmed-button-create></app-karmed-button-create>
+<div class="p-3">
+  <ul class="flex justify-center gap-3 p-3">
+    <button routerLink="/" routerLinkActive="active">card-button</button>
+    <button routerLink="/sidebar-header" routerLinkActive="active">
+      sidebar-header
+    </button>
+    <button routerLink="/demo" routerLinkActive="active">
+      aile-hekimi-demo
+    </button>
+  </ul>
+</div>
+
+<div>
+  <router-outlet></router-outlet>
 </div>

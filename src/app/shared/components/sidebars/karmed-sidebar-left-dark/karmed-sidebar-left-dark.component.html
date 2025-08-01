@@ -1,0 +1,148 @@
+<!-- ANA KONTEYNER: Arka plan rengi koyulaştırıldı ve sağ köşeler yuvarlatıldı -->
+<aside
+  class="flex-shrink-0 bg-slate-50 dark:bg-slate-900 shadow-xl flex flex-col transition-all duration-300 ease-in-out h-screen rounded-r-2xl"
+  [ngClass]="isCollapsed ? 'w-20' : 'w-64'"
+>
+  <div class="h-full flex flex-col">
+    <!-- Logo -->
+    <div
+      class="flex items-center justify-center h-20 border-b border-gray-200 dark:border-slate-700 flex-shrink-0 cursor-pointer"
+      (click)="toggleSidebar()"
+      aria-label="Toggle sidebar"
+    >
+      <!-- LogoIcon SVG -->
+      <svg
+        class="h-8 w-8 text-blue-500 flex-shrink-0"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+        />
+      </svg>
+      <!-- YENİ: Yazı rengi palete uygun hale getirildi -->
+      <span
+        *ngIf="!isCollapsed"
+        class="ml-3 text-xl font-bold text-slate-800 dark:text-slate-100 whitespace-nowrap"
+        >Proje A</span
+      >
+    </div>
+
+    <!-- Search & Navigation -->
+    <div class="flex-grow overflow-y-auto overflow-x-hidden">
+      <div *ngIf="!isCollapsed" class="px-4 pt-6 pb-4">
+        <div class="relative">
+          <div
+            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+          >
+            <!-- SearchIcon SVG -->
+            <svg
+              class="h-5 w-5 text-gray-400 dark:text-slate-400"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+          <!-- YENİ: Arama kutusu renkleri güncellendi -->
+          <input
+            type="search"
+            placeholder="Ara..."
+            [(ngModel)]="searchTerm"
+            class="w-full bg-slate-100 dark:bg-slate-800 border border-transparent rounded-lg py-2 pl-10 pr-4 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+      </div>
+
+      <nav
+        class="space-y-2"
+        [ngClass]="isCollapsed ? 'py-6 px-4' : 'pb-6 px-4'"
+      >
+        <a
+          *ngFor="let item of filteredNavItems"
+          href="#"
+          (click)="setActive(item.text, $event)"
+          [title]="isCollapsed ? item.text : null"
+          [attr.aria-label]="item.text"
+          class="flex items-center py-2.5 rounded-lg text-sm font-medium transition-colors duration-200 ease-in-out w-full"
+          [ngClass]="{
+            'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400':
+              activeItem === item.text,
+            'text-slate-600 dark:text-slate-400 hover:bg-slate-200 hover:text-slate-900 dark:hover:bg-slate-700/50 dark:hover:text-slate-200':
+              activeItem !== item.text,
+            'px-3 justify-center': isCollapsed,
+            'px-4': !isCollapsed
+          }"
+        >
+          <span
+            [innerHTML]="item.icon"
+            [ngClass]="isCollapsed ? '' : 'mr-3'"
+          ></span>
+          <span *ngIf="!isCollapsed" class="whitespace-nowrap">{{
+            item.text
+          }}</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- User Profile -->
+    <div
+      class="px-4 py-4 border-t border-gray-200 dark:border-slate-700 flex-shrink-0"
+    >
+      <div
+        class="flex items-center p-2 rounded-lg transition-colors duration-200"
+        [ngClass]="isCollapsed ? 'justify-center' : ''"
+      >
+        <img
+          src="https://picsum.photos/id/237/40/40"
+          alt="User Avatar"
+          class="h-10 w-10 rounded-full object-cover flex-shrink-0"
+        />
+        <ng-container *ngIf="!isCollapsed">
+          <!-- YENİ: Profil yazı renkleri güncellendi -->
+          <div class="ml-3 overflow-hidden">
+            <p
+              class="text-sm font-semibold text-slate-800 dark:text-slate-100 truncate"
+            >
+              Can Yılmaz
+            </p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 truncate">
+              canyilmaz.com
+            </p>
+          </div>
+          <!-- YENİ: Çıkış butonu renkleri güncellendi -->
+          <button
+            class="ml-auto p-2 rounded-full text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700/50 focus:outline-none flex-shrink-0"
+          >
+            <!-- LogoutIcon SVG -->
+            <svg
+              class="h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              />
+            </svg>
+          </button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</aside>
