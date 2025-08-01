@@ -1,0 +1,68 @@
+<aside class="karmed-sidenav" [ngClass]="{ collapsed: isCollapsed }">
+  <!-- YENİ HEADER: Logo ve Proje Adı -->
+  <div class="header">
+    <div class="logo-section mx-auto" (click)="toggleSidebar()">
+      <!-- Logo SVG -->
+      <svg
+        class="logo-svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+        />
+      </svg>
+      <!-- Sadece açıkken görünen Proje Adı -->
+      <span *ngIf="!isCollapsed" class="project-name">Proje A</span>
+    </div>
+  </div>
+
+  <!-- MENÜLER -->
+  <div class="menus">
+    <p *ngIf="!isCollapsed">Menü</p>
+    <div class="menu-container">
+      <a
+        *ngFor="let item of filteredNavItems"
+        (click)="setActive(item.text, $event)"
+        [title]="isCollapsed ? item.text : null"
+        class="menu"
+        [ngClass]="{ active: activeItem === item.text }"
+      >
+        <div class="menu-img" [innerHTML]="item.icon"></div>
+        <div *ngIf="!isCollapsed" class="menu-name">
+          <p>{{ item.text }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="create-task">
+      <div class="add-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          />
+        </svg>
+      </div>
+      <div *ngIf="!isCollapsed" class="task-text">
+        <p>Yeni Görev Oluştur</p>
+        <span>veya davet linki kullan</span>
+      </div>
+    </div>
+  </div>
+</aside>

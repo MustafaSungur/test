@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+:host {
+  font-family: "Poppins", sans-serif;
+  height: 100vh; /* Ana layout'ta flex ile hizalanacağı için %100 de çalışır */
+}
+
+.karmed-sidenav {
+  width: 250px; /* Geniş hali */
+  height: 100%; /* Parent'ının tüm yüksekliğini kaplar */
+  background-color: rgba(
+    245,
+    247,
+    250,
+    0.85
+  ); /* Hafif mavi tonlu, buzlu bir beyaz */
+  backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Daha yumuşak bir animasyon */
+  padding: 20px;
+  color: #2d3748; /* Koyu gri metin rengi */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+.karmed-sidenav.collapsed {
+  width: 90px; /* Dar hali */
+  padding: 20px 15px;
+}
+
+/* --- Yeni Header --- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.logo-svg {
+  width: 36px;
+  height: 36px;
+  color: #2563eb;
+  flex-shrink: 0;
+}
+
+.project-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* --- Menü --- */
+.menus {
+  flex-grow: 1;
+  margin-top: 15px;
+  overflow-y: auto; /* Çok fazla menü öğesi olursa kaydırma çubuğu çıkar */
+  overflow-x: hidden;
+}
+
+.menus > p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #a0aec0;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  width: 100%;
+}
+
+.menu-img {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+.karmed-sidenav.collapsed .menu-img {
+  margin: 0 auto;
+}
+
+.menu-img ::ng-deep svg {
+  width: 100% !important;
+  height: 100% !important;
+  stroke-width: 1.5;
+}
+
+.menu-name p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.menu:hover {
+  background-color: #fff;
+  color: #1a202c;
+}
+
+.menu.active {
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 4px 20px -5px rgba(37, 99, 235, 0.6);
+}
+.menu.active:hover {
+  background: #1d4ed8;
+}
+
+/* --- Footer --- */
+.footer {
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.create-task {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.karmed-sidenav.collapsed .create-task {
+  padding: 12px;
+  background-color: #2d3748;
+  color: white;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto;
+}
+
+.add-icon {
+  width: 32px;
+  height: 32px;
+  background-color: #2d3748;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.karmed-sidenav.collapsed .add-icon {
+  background-color: #fff;
+  color: #2d3748;
+}
+
+.task-text {
+  margin-left: 10px;
+  text-align: left;
+}
+.task-text p {
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: #2d3748;
+}
+.task-text span {
+  font-size: 0.75rem;
+  color: #718096;
+  white-space: nowrap;
+}

@@ -1,29 +1,30 @@
-<div
-  class="relative flex h-screen bg-gray-100 dark:bg-slate-600 overflow-hidden"
->
-  <app-karmed-sidebar-left-dark
+<!-- src/app/app.component.html -->
+
+<div class="relative flex h-screen bg-slate-800 text-slate-300 overflow-hidden">
+  <!-- SOL SIDEBAR (Mevcut kodunuz) -->
+  <app-karmed-sidebar-left-transparent
     [isCollapsed]="isLeftSidebarCollapsed"
     (toggle)="toggleLeftSidebar()"
-  ></app-karmed-sidebar-left-dark>
+  ></app-karmed-sidebar-left-transparent>
 
-  <main class="flex-grow p-6 overflow-y-auto">
-    <div class="flex justify-between items-center mb-6">
-      <h1 class="text-3xl font-bold text-gray-800 dark:text-white">
-        Hasta Listesi
-      </h1>
-    </div>
+  <!-- SAĞ TARAF İÇERİK ALANI -->
+  <div class="flex-grow flex flex-col">
+    <!-- YENİ: SEKMELERİN (TABS) GÖSTERİLECEĞİ ALAN -->
+    <app-karmed-header-transparent></app-karmed-header-transparent>
+    <app-tab></app-tab>
 
-    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-      <p class="text-gray-700 dark:text-gray-300">
-        Hasta listesi ve diğer içerikler buraya eklenecek...
-      </p>
-    </div>
-  </main>
+    <!-- ANA İÇERİK: Route'a göre değişecek olan bileşenler burada render edilir. -->
+    <!-- 'p-6' ve 'overflow-y-auto' gibi sınıfları main'den buraya taşıdık. -->
+    <main class="flex-grow p-6 overflow-y-auto bg-slate-700">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 
+  <!-- SAĞ SIDEBAR (Mevcut kodunuz, artık bir butonla kontrol ediliyor) -->
   <button
     *ngIf="!isRightSidebarOpen"
     (click)="openRightSidebar()"
-    class="absolute top-1/2 -translate-y-1/2 right-4 z-10 p-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-transform hover:scale-110"
+    class="absolute top-1/2 -translate-y-1/2 right-4 z-10 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform hover:scale-110"
     aria-label="Menüyü aç"
   >
     <svg

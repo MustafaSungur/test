@@ -1,0 +1,10 @@
+<div
+  *ngIf="patientName$ | async as name"
+  class="bg-slate-800 p-6 rounded-lg shadow-lg"
+>
+  <h1 class="text-2xl font-bold text-slate-100 mb-4">{{ name }}</h1>
+  <p class="text-slate-400">
+    Bu alanda hastanın formları, geçmiş ziyaretleri, notlar ve diğer detaylar
+    yer alacaktır.
+  </p>
+</div>

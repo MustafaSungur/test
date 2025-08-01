@@ -11,6 +11,10 @@ export interface Patient {
   status: 'Bekliyor' | 'İçeride'; // Örnek bir durum alanı ekleyelim
 }
 
+export interface Announcement {
+  title: string;
+  content: string;
+}
 @Component({
   selector: 'app-karmed-sidebar-right',
   // imports dizisine FormsModule ve NgIf eklenir
@@ -45,10 +49,22 @@ export class KarmedSidebarRightComponent {
     { id: 110, name: 'Merve Aydın', status: 'Bekliyor' },
   ];
 
-  announcements: string[] = [
-    "Sistem bakımı Cuma 22:00'de yapılacaktır.",
-    'Yeni raporlama özellikleri eklendi.',
-    'Lütfen profil bilgilerinizi güncelleyiniz.',
+  announcements: Announcement[] = [
+    {
+      title: 'Dr. Zeynep Çelik Aramıza Katıldı',
+      content:
+        'Dahiliye uzmanı Dr. Zeynep Çelik, tam zamanlı olarak ekibimize katılmıştır. Kendisine hoş geldin diyoruz.',
+    },
+    {
+      title: 'Maske Kullanımı Hakkında',
+      content:
+        'Sağlık Bakanlığı yönergeleri uyarınca klinik içinde maske takmak zorunludur. Anlayışınız için teşekkür ederiz.',
+    },
+    {
+      title: 'Yeni Randevu Sistemi',
+      content:
+        'Online randevu sistemimiz güncellenmiştir. Daha hızlı ve kolay randevu alabilirsiniz.',
+    },
   ];
 
   // Filtreleme mantığını nesnenin 'name' özelliğine göre güncelliyoruz
